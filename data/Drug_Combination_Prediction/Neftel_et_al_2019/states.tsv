@@ -1,0 +1,163 @@
+state_number	state_name	descriptions
+0	MGH101--normal--Macrophage	
+1	MGH100--tumor--Astrocyte	
+2	MGH100--tumor--Oligodendrocytic progenitor	
+3	MGH100--tumor--Mesenchymal	
+4	MGH100--tumor--Neural progenitor	
+5	MGH101--tumor--Mesenchymal	
+6	MGH101--tumor--Astrocyte	
+7	MGH101--tumor--Neural progenitor	
+8	MGH101--tumor--Oligodendrocytic progenitor	
+9	MGH102--tumor--Neural progenitor	
+10	MGH102--tumor--Oligodendrocytic progenitor	
+11	MGH102--normal--Oligodendrocyte	
+12	MGH102--normal--Macrophage	
+13	MGH102--tumor--Mesenchymal	
+14	MGH102--tumor--Astrocyte	
+15	MGH104--tumor--Mesenchymal	
+16	MGH104--tumor--Astrocyte	
+17	MGH104negP2--tumor--Astrocyte	
+18	MGH104negP2--tumor--Mesenchymal	
+19	MGH104negP4--tumor--Astrocyte	
+20	MGH104negP4--tumor--Mesenchymal	
+21	MGH104negP4--tumor--Neural progenitor	
+22	MGH104negP7--tumor--Astrocyte	
+23	MGH104negP7--tumor--Mesenchymal	
+24	MGH104negP7--tumor--Oligodendrocytic progenitor	
+25	MGH105A--normal--Macrophage	
+26	MGH105A--tumor--Astrocyte	
+27	MGH105A--tumor--Mesenchymal	
+28	MGH105A--tumor--Neural progenitor	
+29	MGH105B--normal--Macrophage	
+30	MGH105B--normal--T-cell	
+31	MGH105B--tumor--Mesenchymal	
+32	MGH105B--normal--Oligodendrocyte	
+33	MGH105B--tumor--Astrocyte	
+34	MGH105C--normal--Macrophage	
+35	MGH105C--tumor--Mesenchymal	
+36	MGH105C--tumor--Astrocyte	
+37	MGH105C--tumor--Oligodendrocytic progenitor	
+38	MGH105C--tumor--Neural progenitor	
+39	MGH105D--normal--Macrophage	
+40	MGH105D--tumor--Astrocyte	
+41	MGH105D--normal--Oligodendrocyte	
+42	MGH105D--tumor--Neural progenitor	
+43	MGH105D--tumor--Mesenchymal	
+44	MGH105D--tumor--Oligodendrocytic progenitor	
+45	MGH106--tumor--Astrocyte	
+46	MGH106--tumor--Mesenchymal	
+47	MGH106--tumor--Neural progenitor	
+48	MGH106CD3posP1--normal--Macrophage	
+49	MGH106CD3posP1--normal--T-cell	
+50	MGH106CD3posP1--tumor--Neural progenitor	
+51	MGH110--normal--Oligodendrocyte	
+52	MGH110--normal--T-cell	
+53	MGH110--normal--Macrophage	
+54	MGH110--tumor--Oligodendrocytic progenitor	
+55	MGH110--tumor--Neural progenitor	
+56	MGH110--tumor--Astrocyte	
+57	MGH110--tumor--Mesenchymal	
+58	MGH113--tumor--Astrocyte	
+59	MGH113--tumor--Neural progenitor	
+60	MGH113--tumor--Oligodendrocytic progenitor	
+61	MGH113--tumor--Mesenchymal	
+62	MGH113--normal--Macrophage	
+63	MGH113--normal--T-cell	
+64	MGH115--tumor--Mesenchymal	
+65	MGH115--tumor--Astrocyte	
+66	MGH115--normal--Macrophage	
+67	MGH115--tumor--Oligodendrocytic progenitor	
+68	MGH115--tumor--Neural progenitor	
+69	MGH121--tumor--Astrocyte	
+70	MGH121--tumor--Mesenchymal	
+71	MGH121--tumor--Neural progenitor	
+72	MGH121--tumor--Oligodendrocytic progenitor	
+73	MGH121--normal--Oligodendrocyte	
+74	MGH122--normal--Macrophage	
+75	MGH122--normal--T-cell	
+76	MGH122--normal--Oligodendrocyte	
+77	MGH122--tumor--Oligodendrocytic progenitor	
+78	MGH122--tumor--Neural progenitor	
+79	MGH122--tumor--Mesenchymal	
+80	MGH122--tumor--Astrocyte	
+81	MGH124--tumor--Neural progenitor	
+82	MGH124--tumor--Oligodendrocytic progenitor	
+83	MGH124--tumor--Mesenchymal	
+84	MGH124--tumor--Astrocyte	
+85	MGH124--normal--Macrophage	
+86	MGH124--normal--Oligodendrocyte	
+87	MGH125--normal--Macrophage	
+88	MGH125--normal--T-cell	
+89	MGH125--tumor--Neural progenitor	
+90	MGH125--normal--Oligodendrocyte	
+91	MGH125--tumor--Oligodendrocytic progenitor	
+92	MGH125--tumor--Astrocyte	
+93	MGH125--tumor--Mesenchymal	
+94	BT749--tumor--Neural progenitor	
+95	BT749--tumor--Oligodendrocytic progenitor	
+96	BT749--tumor--Mesenchymal	
+97	BT771--tumor--Mesenchymal	
+98	BT771--tumor--Astrocyte	
+99	BT771--tumor--Neural progenitor	
+100	BT830--tumor--Astrocyte	
+101	BT830--tumor--Mesenchymal	
+102	MGH85--tumor--Mesenchymal	
+103	MGH85--normal--Oligodendrocyte	
+104	BT1160--tumor--Neural progenitor	
+105	BT1160--tumor--Oligodendrocytic progenitor	
+106	BT1160--tumor--Mesenchymal	
+107	BT1160--tumor--Astrocyte	
+108	BT1187--normal--Macrophage	
+109	BT1187--normal--T-cell	
+110	BT1187--tumor--Mesenchymal	
+111	BT1187--tumor--Astrocyte	
+112	BT1187--tumor--Neural progenitor	
+113	BT786--tumor--Oligodendrocytic progenitor	
+114	BT786--tumor--Neural progenitor	
+115	BT786--tumor--Mesenchymal	
+116	BT786--tumor--Astrocyte	
+117	BT786--normal--Oligodendrocyte	
+118	BT786--normal--Macrophage	
+119	BT920--normal--Macrophage	
+120	BT920--tumor--Mesenchymal	
+121	BT920--tumor--Astrocyte	
+122	BT920--tumor--Neural progenitor	
+123	BT920--tumor--Oligodendrocytic progenitor	
+124	BT749--normal--Oligodendrocyte	
+125	BT771--normal--Oligodendrocyte	
+126	BT771--tumor--Oligodendrocytic progenitor	
+127	BT771--normal--Macrophage	
+128	MGH128CD45neg--normal--Oligodendrocyte	
+129	MGH128CD45neg--tumor--Mesenchymal	
+130	MGH128CD45neg--tumor--Neural progenitor	
+131	MGH128CD45neg--tumor--Astrocyte	
+132	MGH129CD45neg--tumor--Astrocyte	
+133	MGH129CD45neg--tumor--Oligodendrocytic progenitor	
+134	MGH129CD45neg--tumor--Mesenchymal	
+135	MGH129CD45neg--tumor--Neural progenitor	
+136	MGH129CD45neg--normal--Oligodendrocyte	
+137	MGH136CD45neg--tumor--Neural progenitor	
+138	MGH136CD45neg--tumor--Oligodendrocytic progenitor	
+139	MGH136CD45neg--tumor--Astrocyte	
+140	MGH136CD45neg--normal--Oligodendrocyte	
+141	MGH136CD45neg--tumor--Mesenchymal	
+142	MGH143CD45neg--tumor--Astrocyte	
+143	MGH143CD45neg--tumor--Neural progenitor	
+144	MGH143CD45neg--tumor--Mesenchymal	
+145	MGH143CD45neg--tumor--Oligodendrocytic progenitor	
+146	MGH143CD45neg--normal--Oligodendrocyte	
+147	MGH151CD45neg--normal--Oligodendrocyte	
+148	MGH151CD45neg--tumor--Astrocyte	
+149	MGH151CD45neg--tumor--Neural progenitor	
+150	MGH151CD45neg--tumor--Mesenchymal	
+151	MGH151CD45neg--tumor--Oligodendrocytic progenitor	
+152	MGH152CD45neg--tumor--Neural progenitor	
+153	MGH152CD45neg--tumor--Mesenchymal	
+154	MGH152CD45neg--tumor--Astrocyte	
+155	MGH152CD45neg--normal--Oligodendrocyte	
+156	MGH152CD45neg--tumor--Oligodendrocytic progenitor	
+157	MGH66--tumor--Astrocyte	
+158	MGH66--tumor--Neural progenitor	
+159	MGH66--tumor--Oligodendrocytic progenitor	
+160	MGH66--tumor--Mesenchymal	
+161	MGH66--normal--Macrophage	

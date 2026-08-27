@@ -1,0 +1,22 @@
+state_number	state_name	descriptions
+0	other	all other cell types
+1	normal_brain	normal brain tissue samples
+2	in_vitro_differentiated_neurons	cells that have been differentiated into neural-type cells in vitro
+3	other_brain_cancers	neuroblastoma and neuroectodermal tumors
+4	gliomas	variety of subtypes of glioma
+5	glioblastoma	glioblastoma and astrocytomas
+6	recurrent_glioblastoma	recurrent_glioblastomas
+7	CbCx	cerebellar cortex
+8	CgG	central gray
+9	FL	frontal lobe
+10	GP	globus pallidus
+11	Ins	insula
+12	OL	occipetal lobe
+13	PHG	parahippocampal gyrus
+14	PL	parietal lobe
+15	Str	subiculum, transitional area
+16	TL	temporal lobe
+17	FL_gbm	glioblastoma resected from frontal lobe
+18	OL_gbm	glioblastoma resected from occipetal lobe
+19	PL_gbm	glioblastoma resected from parietal lobe
+20	TL_gbm	glioblastoma resected from temporal lobe

@@ -1,0 +1,48 @@
+state_number	state_name	descriptions
+0	other_gsc-BT127	Stem-like cells from BT127
+1	other_gsc-BT147	Stem-like cells from BT147
+2	BT48-partialdiff	Partially differentiated cells from BT48
+3	BT48-undiff	Undifferentiated cells from BT48
+4	BT48-fulldiff	Fully differentiated cells from BT48
+5	BT67-partialdiff	Partially differentiated cells from BT67
+6	BT67-undiff	Undifferentiated cells from BT67
+7	BT67-fulldiff	Fully differentiated cells from BT67
+8	other_gsc-BT73	Stem-like cells from BT73
+9	other_gsc-BT84	Stem-like cells from BT84
+10	BT89-partialdiff	Partially differentiated cells from BT89
+11	BT89-fulldiff	Fully differentiated cells from BT89
+12	BT89-undiff	Undifferentiated cells from BT89
+13	BT94-fulldiff	Fully differentiated cells from BT94
+14	BT94-partialdiff	Partially differentiated cells from BT94
+15	BT94-undiff	Undifferentiated cells from BT94
+16	G1003-cancer	Cancer cells from G1003
+17	G1003-normal	Normal cells from G1003
+18	other_gsc-G523	Stem-like cells from G523
+19	other_gsc-G549	Stem-like cells from G549
+20	other_gsc-G564	Stem-like cells from G564
+21	other_gsc-G566	Stem-like cells from G566
+22	other_gsc-G583	Stem-like cells from G583
+23	G620_L	Stem-like cells from G620
+24	G620_T	Diffentiated tumor cells from G620
+25	other_gsc-G637	Stem-like cells from G637
+26	other_gsc-G729	Stem-like cells from G729
+27	other_gsc-G797	Stem-like cells from G797
+28	other_gsc-G799	Stem-like cells from G799
+29	other_gsc-G800	Stem-like cells from G800
+30	other_gsc-G837	Stem-like cells from G837
+31	other_gsc-G851	Stem-like cells from G851
+32	other_gsc-G876	Stem-like cells from G876
+33	other_gsc-G885	Stem-like cells from G885
+34	other_gsc-G895	Stem-like cells from G895
+35	G910-cancer	Cancer cells from G910
+36	G910-normal	Normal cells from G910
+37	G945-stem	Stem cells from G945
+38	G945-cancer	Cancer cells from G945
+39	G945-normal	Normal cells from G945
+40	G946-cancer	Cancer cells from G946
+41	G946-normal	Normal cells from G946
+42	G946-stem	Stem cells from G946
+43	G967-normal	Normal cells from G967
+44	G967-cancer	Cancer cells from G967
+45	G983-normal	Normal cells from G983
+46	G983-cancer	Cancer cells from G983
