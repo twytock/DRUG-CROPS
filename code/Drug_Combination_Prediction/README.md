@@ -5,22 +5,8 @@ Source code for performing the drug pair predictions in the paper "Repurposing D
 
 ### Drug combination prediction
 The drug combination prediction algorithm uses CPLEX, which requires Python v. 3.6.
-To perform the drug prediction algorithm, the packages indicated in the file `drug_comb_pred.yml` must be installed using the command `conda env create -f drug_comb_pred.yml`. 
+To perform the drug prediction algorithm, the packages indicated in the file `drug_comb_pred.yml` found in this directory must be installed using the command `conda env create -f drug_comb_pred.yml`. 
 Before running the code, activate the environment with Activate the environment with `conda activate drug_comb_pred`.
-
-## Repository Organization
-This repository is organized into 3 directories:
-
-1. `data/`   --  Contains input files necessary for running the scripts
-2. `code/`   --  Contains the python (and/or bash) scripts
-3. `output/` --  Collects the outputs of the code execution
-
-The executing the code in the `code/` directory will write to the `output/` directory. 
-Items in the `data/` directory remain unchanged. 
-
-Within each of the top-level directories, there is a subdirectory for `*/Drug_Combination_Prediction/`,
-where `*` is a wildcard character for the three top level directories above.
-Documentation for running the code is provided below. 
 
 ## Drug Combination Prediction Documentation
 
