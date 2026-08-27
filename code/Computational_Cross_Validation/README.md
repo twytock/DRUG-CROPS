@@ -1,0 +1,199 @@
+## Description
+Source code for performing the computational cross-validation in the paper "Repurposing Drug Combinations for the Treatment of Brain Cancers."
+
+## System Requirements and Installation
+### Computational cross validation
+Python (v. 3.7) was used to perform the computational cross-validation. 
+To perform the computational cross validation, the packages indicated in the file `comb_pred_env.yml` found in this directory.
+
+The required version of python and the dependent packages can be downloaded here: https://www.anaconda.com/distribution/.
+After installing conda, create a new anaconda environment and install from the default channels with `conda env create -f comb_pred_env.yml`.
+Activate the environment with `conda activate comb_pred_env`
+
+## Computational Cross-validation Documentation
+
+The cross-validation is distributed among four scripts:
+
+1. `find_perturbation_relationships.py` -- applies Algorithm S1 to the metadata to construct state-perturbation graphs.
+2. `calc_drug_effects.py` -- uses the state-perturbation graphs to calculate the difference in gene expression between states for each edge in each graph.
+3. `multi_pert_analysis.py` -- uses the gene expression differences and state-perturbation graphs to construct the training data using Algorithm S2. This training data is used in the leave-one-project-out cross validation, which is also performed by this script.
+4. `fig2_r2_validation_plot.py` -- uses the leave-one-project-out statistics to generate Fig. 2 in the main text.
+
+### Running `find_perturbation_relationships.py`
+Running the command `python code/Computational_Cross_Validation/find_perturbation_relationships.py -h` will produce the following usage statement:
+
+```
+usage: find_perturbation_relationships.py [-h] [-V v]
+
+Generate a network where nodes are cell states and edges connect states
+related by a single perturbation.
+
+optional arguments:
+  -h, --help         show this help message and exit
+  -V v, --version v  version of files to use
+```
+For all the scripts covered in this README file, the default version of the files is "\_0122" so that they match those provided in the `./data/Computational_Cross_Validation/` directory, and the symbol `%s` is used in place of the version when it appears in file names.
+Providing a non-default version name is only necessary if the filenames provided in this repository are modified.
+Using a different file version will require renaming of the input files. 
+This version string will also be attached to the script's output files. 
+
+To generate the state-perturbation graph, enter the command
+`python code/Computational_Cross_Validation/find_perturbation_relationships.py` 
+at the base directory of the repository.
+
+#### Input file list
+All input files are present in `./data/Computational_Cross_Validation/`. 
+1. `combined_SRA_metadata-converted_genotype%s.csv` -- table containing the SRA metadata
+2. `ENCODE_metadata.csv` -- table containing the ENCODE metadata
+
+The first file corresponds to Supplementary Table S6 of the paper.
+
+#### Output file list
+All output file is deposited in `./output/Computational_Cross_Validation/`.
+1. `project_graph_d%s.pkl` -- a dictionary with keys corresponding to BioProject identifiers and values corresponding to state-perturbation graphs (stored as NetworkX digraphs)
+
+#### Script function summary
+This script takes in the experimental metadata as input and iterates over all the BioProjects, generating a graph of cell states connected by single perturbations for each BioProject, as described by Algorithm S1 of the Supplementary Material. 
+Each node in the graph corresponds to 1 or more experiments from the gene expression data matrix, and each edge is a single perturbation. 
+
+
+### Running `calc_drug_effects.py`
+Running the command `python code/Computational_Cross_Validation/calc_drug_effects.py -h`
+will produce the following usage statement:
+```
+usage: calc_drug_effects.py [-h] [-V v]
+
+Generate training data from the cell-state-perturbation network for each
+BioProject.
+
+optional arguments:
+  -h, --help         show this help message and exit
+  -V v, --version v  version of files to use
+```
+
+To calculate the gene expression differences between states, enter the command
+`python code/Computational_Cross_Validation/calc_drug_effects.py` 
+at the base directory of the repository.
+
+#### Input file list
+The following input files are present in 
+`./data/Computational_Cross_Validation/`:
+1. `drug_bc_corr_data%s.gctx` -- a table (stored as a GCToo object in the cmapPy package) of the gene expression data from SRA and ENCODE projected onto the eigengenes.
+2. `SRX_metadata%s.csv.gz` --  a table of the expression metadata with the same index as the `drug_bc_corr_data%s.gctx` table
+
+The row metadata in `drug_bc_corr_data%s.gctx` is derived from Supplementary Table S7.
+
+The following input file is present in 
+`./output/Computational_Cross_Validation/`:
+1. `project_graph_d%s.pkl` -- dictionary of state-perturbation graphs generated by `find_perturbation_relationships.py`.
+
+#### Output file list
+The following output files are deposited in 
+`./output/Computational_Cross_Validation/`
+
+1. `drug_delta_selcorr_df%s.gctx` -- a table of gene expression differences projected onto the eigengenes for single perturbations in the graph.
+2. `deviations_2ord_%s.pkl` -- a table of pairwise perturbations indexed by their constituent single perturbations.
+
+#### Script function summary
+This script calculates the nonadditive deviations in two steps.
+First, this script takes in the project graph (generated in the preceding script) and
+calculates the single perturbation transcriptional responses (stored in  `drug_delta_selcorr_df%s.gctx`).
+Then, the script iterates over all the BioProjects using Algorithm S2 of the Supplementary Material to generate the initial states, perturbations, and observed nonadditivities for each double perturbation (which corresponds to a directed path of length 2 in the cell state-perturbation graph). 
+Together, the initial states, perturbations, and observed nonadditivities form the training data for computational cross validation, which is stored as a pandas DataFrame at the file `deviations_2ord%s.pkl`.
+
+
+### Running `multi_pert_analysis.py`
+Running the command `python code/Computational_Cross_Validation/multi_pert_analysis.py -h`
+will produce the following usage statement:
+```
+usage: multi_pert_analysis.py [-h] [-V v]
+
+Perform the leave-one-bioproject-out cross validation and calculate summary statistics.
+
+optional arguments:
+  -h, --help         show this help message and exit
+  -V v, --version v  version of files to use
+```
+
+To calculate the gene expression differences between states, enter the command
+`python code/Computational_Cross_Validation/multi_pert_analysis.py` 
+at the base directory of the repository.
+
+#### Input file list
+
+The following input files are present in 
+`./data/Computational_Cross_Validation/`:
+1. drug_bc_corr_data%s.gctx -- a table (stored as a GCToo object in the cmapPy package) of the gene expression data from SRA and ENCODE projected onto the eigengenes.
+2. SRX_metadata%s.csv.gz --  a table of the expression metadata with the same index as the drug_bc_corr_data%s.gctx table
+
+The following input files are present in 
+`./output/Computational_Cross_Validation/`:
+1. drug_delta_selcorr_df%s.gctx -- a table of gene expression differences projected onto the eigengenes for single perturbations in the graph generated by `calc_drug_effects.py`.
+2. deviations_2ord_%s.pkl -- a table of pairwise perturbations indexed by their constituent single perturbations generated by `calc_drug_effects.py`.
+3. project_graph_d%s.pkl -- dictionary of state-perturbation graphs generated by `find_perturbation_relationships.py`.
+
+#### Output file list
+
+The following output files are deposited in 
+`./output/Computational_Cross_Validation/`
+1. dev2bioproject%s.pkl -- mapping of the perturbation pairs to their Bioproject.
+2. comb_corr_indep%s.pkl -- a table of state-perturbation concatentations that are used as the independent variables in the nonadditivity prediction algorithm, labeled by the indices of the constituent single perturbations in drug_delta_selcorr_df%s.gctx.
+3. comb_corr_dep%s.pkl -- a table of nonadditivities used as dependent variables in training the combinatorial perturbations algorithm, labeled by the indices of the constituent single perturbations in drug_delta_selcorr_df%s.gctx.
+4. r2_devs_lopo%s.pkl -- table of Coefficient of determination between the predicted and observed nonadditivities.
+5. predictions_lopo%s.pkl -- table of predicted states generated by the nonadditive method corresponding to each perturbation pair.
+6. predictions_lin%s.pkl -- table of predicted states generated by the additive method corresponding to each perturbation pair.
+7. lopo_stats%s.pkl -- summary statistics used for creating the figures.
+8. lopo_states%s.pkl -- metadata for each perturbation pair.
+
+Only "lopo_stats%s.pkl", "predictions_lopo%s.pkl", and "dev2bioproject%s.pkl" necessary for generating the figures in the next step.
+
+#### Script function summary
+This script produces the summary statistics for the leave-one-project-out cross validation in two steps.
+First, it assembles the training data in terms of dependent and independent variables by using `drug_bc_corr_data%s.gctx`, `drug_delta_selcorr_df%s.gctx`, and `deviations_2ord%s.pkl` as inputs.
+Then, it performs the leave-one-project-out cross validation, by leaving out data from a single BioProject and trains the KNN model on the remainder of the data, as discussed in the section "Nonadditivity prediction" of the Results.
+The trained KNN model is used to predict the transcriptional states of the left-out BioProject and the agreement with the observed transcriptional states is assessed using the coefficient of determination ($R^2$), as described in the section "Out-of-sample cross validation" of the Results.
+The left-out BioProject is permuted until predictions are made for all BioProjects.
+
+### Running `fig2_r2_validation_plot.py`
+Running the command `python code/Computational_Cross_Validation/fig2_r2_validation_plot.py -h`
+will produce the following usage statement:
+```
+usage: fig2_r2_validation_plot.py [-h] [-V v]
+
+Generate Fig. 2 from the leave-one-bioproject-out cross validation summary statistics.
+
+optional arguments:
+  -h, --help         show this help message and exit
+  -V v, --version v  version of files to use
+```
+
+To generate Fig. 2, enter the command
+`python code/Computational_Cross_Validation/fig2_r2_validation_plot.py` 
+at the base directory of the repository.
+
+#### Input file list
+
+The following input file is present in 
+`./data/Computational_Cross_Validation/`:
+1. drug_bc_corr_data%s.gctx -- a table (stored as a GCToo object in the cmapPy package) 
+
+The following input files are present in 
+`./output/Computational_Cross_Validation/`:
+1. drug_delta_selcorr_df%s.gctx -- a table of gene expression differences projected onto the eigengenes for single perturbations in the graph generated by `calc_drug_effects.py`.
+2. deviations_2ord_%s.pkl -- a table of pairwise perturbations indexed by their constituent single perturbations generated by `calc_drug_effects.py`.
+3. project_graph_d%s.pkl -- dictionary of state-perturbation graphs generated by `find_perturbation_relationships.py`.
+4. dev2bioproject%s.pkl -- mapping of the perturbation pairs to their Bioproject.
+5. lopo_stats%s.pkl -- summary statistics used for creating the figures.
+6. predictions_lopo%s.pkl -- table of predicted states generated by the nonadditive method corresponding to each perturbation pair.
+
+#### Output file list
+
+The following output file is deposited in `./output/Computational_Cross_Validation/`:
+1. %s/diff_v_avg_updated%s.svg
+
+
+#### Script function summary
+This script takes in the cross validation results (`predictions_lopo%s.pkl` and 
+`predictions_lopo%s.pkl`) to generate the panels of Figure 2.
+The $R^2$ results in Supplementary Dataset S1 can be generated from lopo_stats.
+
